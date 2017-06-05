@@ -1073,6 +1073,15 @@ IScroll.prototype = {
 		wheelDeltaX *= this.options.invertWheelDirection;
 		wheelDeltaY *= this.options.invertWheelDirection;
 
+		var wheelXMaxRatio = this.options.wheelXMaxRatio || this.options.wheelMaxRatio
+		var wheelYMaxRatio = this.options.wheelYMaxRatio || this.options.wheelMaxRatio
+		if (wheelXMaxRatio) {
+			wheelDeltaX = Math.sign(wheelDeltaX) * Math.min(this.scrollerWidth * wheelXMaxRatio, Math.abs(wheelDeltaX));
+		}		
+		if (wheelYMaxRatio) {
+			wheelDeltaY = Math.sign(wheelDeltaY) * Math.min(this.scrollerHeight * wheelYMaxRatio, Math.abs(wheelDeltaY));
+		}
+
 		if ( !this.hasVerticalScroll ) {
 			wheelDeltaX = wheelDeltaY;
 			wheelDeltaY = 0;
