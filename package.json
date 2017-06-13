@@ -14,6 +14,9 @@
     "desktop"
   ],
   "main": "build/iscroll.js",
+  "files": [
+    "build/iscroll.js"
+  ],
   "devDependencies": {
     "jshint": "~2.9.1",
     "uglify-js": "~2.6.2"

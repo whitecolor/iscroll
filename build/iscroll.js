@@ -545,7 +545,9 @@ IScroll.prototype = {
 		absDistY		= Math.abs(this.distY);
 
 		// We need to move at least 10 pixels for the scrolling to initiate
-		if ( timestamp - this.endTime > 300 && (absDistX < 10 && absDistY < 10) ) {
+		var moveMinDistance = this.options.moveMinDistance || 10
+		var moveMaxTimeDiff = this.options.moveMaxTimeDiff || 300
+		if ( timestamp - this.endTime > moveMaxTimeDiff && (absDistX < moveMinDistance && absDistY < moveMinDistance) ) {
 			return;
 		}
 
