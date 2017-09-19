@@ -1210,11 +1210,12 @@ IScroll.prototype = {
 
 		var wheelXMaxRatio = this.options.wheelXMaxRatio || this.options.wheelMaxRatio
 		var wheelYMaxRatio = this.options.wheelYMaxRatio || this.options.wheelMaxRatio
+		var sign = function (x) { return x === 0 ? 0 : (x > 0 ? 1 : -1)}
 		if (wheelXMaxRatio) {
-			wheelDeltaX = Math.sign(wheelDeltaX) * Math.min(this.scrollerWidth * wheelXMaxRatio, Math.abs(wheelDeltaX));
+			wheelDeltaX = sign(wheelDeltaX) * Math.min(this.scrollerWidth * wheelXMaxRatio, Math.abs(wheelDeltaX));
 		}		
 		if (wheelYMaxRatio) {
-			wheelDeltaY = Math.sign(wheelDeltaY) * Math.min(this.scrollerHeight * wheelYMaxRatio, Math.abs(wheelDeltaY));
+			wheelDeltaY = sign(wheelDeltaY) * Math.min(this.scrollerHeight * wheelYMaxRatio, Math.abs(wheelDeltaY));
 		}
 
 		if ( !this.hasVerticalScroll ) {
